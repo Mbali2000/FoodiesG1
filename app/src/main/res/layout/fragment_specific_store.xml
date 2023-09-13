@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Fragments.SpecificStoreFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_margin="15dp"
-            android:src="@drawable/baseline_food_bank_24"
-            android:contentDescription="Shop Icon"/>
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/baseline_food_bank_24"
+        android:contentDescription="@string/shop_icon"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -23,76 +25,68 @@
             android:layout_margin="15dp">
 
             <TextView
+                android:id="@+id/shop_name_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Food Shop"
-                android:textColor="#0846BA"
+                android:text="@string/food_shop_name"
+                android:textColor="@color/blue"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/location_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Upper Campus"
+                android:text="@string/location"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/time_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9am - 4pm"
+                android:text="@string/time"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/cuisine_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vegetarian food"
+                android:text="@string/cuisine"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/rating_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4.5 stars"
+                android:text="@string/stars"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
                 android:textSize="13sp" />
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="end|center"
-            android:layout_marginStart="50dp"
-            android:paddingStart="5dp">
-
-            <ImageButton
-                android:id="@+id/edit_shop_btn"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_baseline_edit_24"
-                android:background="@color/white"
-                android:layout_marginStart="10dp"
-                android:contentDescription="Edit Shop Details"/>
-
-
-        </LinearLayout>
-
-
+        <ImageButton
+            android:id="@+id/edit_shop_btn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            android:background="@color/white"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/edit_shop"/>
 
     </LinearLayout>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#0846BA"
+        android:background="@color/blue"
         android:layout_marginTop="10dp" />
 
     <LinearLayout
@@ -105,10 +99,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Menu items"
+            android:text="@string/menu_items"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"/>
+
+        <ImageButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:rotation="180"
+            android:contentDescription="@string/more"
+            android:layout_marginStart="155dp"/>
 
         <ImageButton
             android:id="@+id/edit_menu_btn"
@@ -116,9 +118,8 @@
             android:layout_height="48dp"
             android:src="@drawable/ic_baseline_edit_24"
             android:background="@color/white"
-            android:layout_marginStart="215dp"
-            android:contentDescription="Edit Menu Items"/>
-
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/edit_menu"/>
 
     </LinearLayout>
 
@@ -126,136 +127,110 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="15dp"
+        android:padding="10dp"
         android:gravity="center_vertical"
         android:id="@+id/second">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-
-            android:layout_margin="5dp">
-
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="16dp"
+                android:layout_margin="8dp"
+                android:padding="10dp"
+                android:background="@color/light_gray"
                 android:layout_gravity="center_horizontal|center_vertical">
 
-
                 <TextView
+                    android:id="@+id/menu_item1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textAlignment="center"
-                    android:text="Chicken Sub"
+                    android:text="@string/menu_item_example"
                     android:textStyle="bold"
                     android:textSize="20sp"
                     android:textColor="@android:color/black"
                     android:layout_gravity="center_horizontal"/>
 
                 <TextView
+                    android:id="@+id/item_price1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textAlignment="center"
-                    android:text="R 0.00"
+                    android:text="@string/price_example"
                     android:textColor="@android:color/black"
                     android:layout_gravity="center_horizontal"/>
 
             </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
+        <LinearLayout
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:padding="10dp"
+            android:background="@color/light_gray"
+            android:layout_gravity="center_horizontal|center_vertical">
 
-            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/menu_item2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:text="@string/menu_item_example"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center_horizontal"/>
 
-            <LinearLayout
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="16dp"
-                android:layout_gravity="center_horizontal|center_vertical">
+            <TextView
+                android:id="@+id/item_price2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:text="@string/price_example"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center_horizontal"/>
 
+        </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textAlignment="center"
-                    android:text="Chicken Sub"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/black"
-                    android:layout_gravity="center_horizontal"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textAlignment="center"
-                    android:text="R 0.00"
-                    android:textColor="@android:color/black"
-                    android:layout_gravity="center_horizontal"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
+        <LinearLayout
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:padding="10dp"
+            android:background="@color/light_gray"
+            android:layout_gravity="center_horizontal|center_vertical">
 
-            android:layout_margin="5dp">
+            <TextView
+                android:id="@+id/menu_item3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:text="@string/menu_item_example"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center_horizontal"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="16dp"
-                android:layout_gravity="center_horizontal|center_vertical">
+            <TextView
+                android:id="@+id/item_price3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:text="@string/price_example"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center_horizontal"/>
 
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textAlignment="center"
-                    android:text="Chicken Sub"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textColor="@android:color/black"
-                    android:layout_gravity="center_horizontal"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:textAlignment="center"
-                    android:text="R 0.00"
-                    android:textColor="@android:color/black"
-                    android:layout_gravity="center_horizontal"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#0846BA"
-        android:layout_marginTop="10dp" />
-
-
-
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -265,7 +240,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="Ratings and Reviews"
+            android:text="@string/review"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"/>
@@ -277,11 +252,17 @@
             android:src="@drawable/ic_baseline_edit_24"
             android:background="@color/white"
             android:layout_marginStart="130dp"
-            android:contentDescription="Add Review"/>
+            android:contentDescription="@string/add_review"/>
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/blue"
+        android:layout_marginTop="10dp" />
 
     <LinearLayout
+        android:id="@+id/review_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -292,7 +273,6 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_margin="5dp">
 
             <LinearLayout
@@ -303,11 +283,12 @@
                 android:layout_gravity="center_horizontal|center_vertical">
 
                 <TextView
+                    android:id="@+id/customer_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textAlignment="center"
-                    android:text="Customer name"
+                    android:text="@string/cust_name"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:textColor="@android:color/black" />
@@ -321,53 +302,48 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="5dp"
-                        android:src="@drawable/star_icon" />
+                        android:src="@drawable/star_icon"
+                        android:contentDescription="@string/rate_star"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="5dp"
-                        android:src="@drawable/star_icon" />
+                        android:src="@drawable/star_icon"
+                        android:contentDescription="@string/rate_star"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="5dp"
-                        android:src="@drawable/star_icon" />
+                        android:src="@drawable/star_icon"
+                        android:contentDescription="@string/rate_star"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="5dp"
-                        android:src="@drawable/star_icon" />
+                        android:src="@drawable/star_icon"
+                        android:contentDescription="@string/rate_star"/>
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="5dp"
-                        android:src="@drawable/star_icon" />
+                        android:src="@drawable/star_icon"
+                        android:contentDescription="@string/rate_star"/>
 
                 </LinearLayout>
 
-
-
                 <TextView
+                    android:id="@+id/customer_review"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Health is the biggest wealth. It helps us to enjoy all the little things in life. If one is not healthy, they fail to feel happy. Being unhappy can impact the health of people around us too. In order to be truly healthy, one must eat well, sleep on time and wake up early."
+                    android:text="@string/random_review_text"
                     android:textColor="@android:color/black"
                     />
-
             </LinearLayout>
-
         </androidx.cardview.widget.CardView>
-
 
 
     </LinearLayout>
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="#0846BA"
-        android:layout_marginTop="10dp"/>
-
-</LinearLayout>
+    </LinearLayout>

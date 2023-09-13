@@ -126,10 +126,10 @@
         android:layout_marginTop="90dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:id="@+id/fourth"
         android:layout_below="@+id/third">
 
         <TextView
+            android:id="@+id/edit_profile"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:background="@drawable/bg_btn"
@@ -142,6 +142,7 @@
             android:layout_marginLeft="-10dp"/>
 
         <TextView
+            android:id="@+id/change_password"
             android:layout_width="200dp"
             android:layout_height="50dp"
             android:background="@drawable/bg_btn"

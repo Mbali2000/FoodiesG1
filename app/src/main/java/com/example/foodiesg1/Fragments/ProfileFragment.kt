@@ -1,6 +1,7 @@
 package com.example.foodiesg1.Fragments
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -32,16 +33,15 @@ class ProfileFragment : Fragment() {
     
     var nodeID = " "
     var shopImage: String? = " "
-    //val dtl: Long = 0
-    //val calendar = Calendar.getInstance()
-    //private val dateFormat = SimpleDateFormat("dd-MM-yyyy")    
-   
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            nodeID = it.getString("shop_id").toString()
             
         }
+
     }
 
     override fun onCreateView(
@@ -63,8 +63,52 @@ class ProfileFragment : Fragment() {
         binding.btnEditprofie.setOnClickListener(){
             add_Data()
         }
+
+        if (nodeID !=""){
+            disply_data()
+        }
+
+        binding.btnEditprofie.setOnClickListener(){
+            updata_data()
+        }
+
+        //binding.btnDel.setOnC
+
+
         
         return root
+    }
+
+    private fun updata_data() {
+        val shopName = binding.shopname.text.toString()
+        val shopEmail = binding.shopemail.text.toString()
+        val shopNumber = binding.shopNumber.text.toString()
+        val shopPassword = binding.shopPassword.text.toString()
+        //dtClass = DtClass()
+        db = FirebaseDatabase.getInstance().getReference("Shops")
+        val shop = shopDC(shopName, shopImage, shopEmail, shopNumber, shopPassword)
+        val databaseReference = FirebaseDatabase.getInstance().reference
+        val id = databaseReference.push().key
+        db.child(id.toString()).setValue(shop).addOnSuccessListener {
+            binding.shopname.text.clear()
+            shopImage = " "
+            binding.shopemail.text.clear()
+            binding.shopNumber.text.clear()
+            binding.shopPassword.text.clear()
+
+            binding.profileImage.setImageBitmap(null)
+            Toast.makeText(context,"Data Inserted!", Toast.LENGTH_SHORT).show()
+
+
+        }
+
+    private fun disply_data() {
+        db = FirebaseDatabase.getInstance().getReference("shops")
+        db.child(nodeID).get().addOnSuccessListener {
+            if (it.exists()){
+              //dtclass = dtclass()
+            }
+        }
     }
 
     private fun add_Data() {
@@ -101,7 +145,10 @@ class ProfileFragment : Fragment() {
                 val inputStream = context?.contentResolver?.openInputStream(uri!!)
                 val myBitmap = BitmapFactory.decodeStream(inputStream)
                 val stream = ByteArrayOutputStream()
-                shopImage = Base64.encodeToString(bytes, Base.DEFAULT)
+                myBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                val bytes = stream.toByteArray()
+
+                shopImage = Base64.encodeToString(bytes, Base64.DEFAULT)
                 binding.profileImage.setImageBitmap(myBitmap)
                 inputStream!!.close()
                 Toast.makeText(context, "Image Selected", Toast.LENGTH_SHORT).show()

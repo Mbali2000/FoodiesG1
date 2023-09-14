@@ -245,6 +245,7 @@
             android:textSize="20sp"
             android:textStyle="bold"/>
 
+
         <ImageButton
             android:id="@+id/add_review_btn"
             android:layout_width="48dp"
@@ -344,6 +345,14 @@
 
 
     </LinearLayout>
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:background="@color/white"
+        android:layout_marginStart="10dp"
+        android:contentDescription="@string/add_review"/>
 
 
     </LinearLayout>

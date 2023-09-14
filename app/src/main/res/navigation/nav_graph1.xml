@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_specificStoreFragment_to_menuFragment"
             app:destination="@id/menuFragment" />
+        <action
+            android:id="@+id/action_specificStoreFragment_to_overviewFragment"
+            app:destination="@id/overviewFragment" />
     </fragment>
     <fragment
         android:id="@+id/menuFragment"

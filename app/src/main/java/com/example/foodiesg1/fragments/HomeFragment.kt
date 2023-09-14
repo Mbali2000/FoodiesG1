@@ -20,13 +20,13 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener,
+class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClickListener,
     TaskAdapter.TaskAdapterInterface {
 
     private val TAG = "HomeFragment"
     private lateinit var binding: FragmentHomeBinding
     private lateinit var database: DatabaseReference
-    private var frag: ToDoDialogFragment? = null
+    private var frag: AddRestaurantDialogFragment? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var authId: String
 
@@ -55,12 +55,12 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
 
             if (frag != null)
                 childFragmentManager.beginTransaction().remove(frag!!).commit()
-            frag = ToDoDialogFragment()
+            frag = AddRestaurantDialogFragment()
             frag!!.setListener(this)
 
             frag!!.show(
                 childFragmentManager,
-                ToDoDialogFragment.TAG
+                AddRestaurantDialogFragment.TAG
             )
 
         }
@@ -154,11 +154,11 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
         if (frag != null)
             childFragmentManager.beginTransaction().remove(frag!!).commit()
 
-        frag = ToDoDialogFragment.newInstance(toDoData.taskId, toDoData.task)
+        frag = AddRestaurantDialogFragment.newInstance(toDoData.taskId, toDoData.task)
         frag!!.setListener(this)
         frag!!.show(
             childFragmentManager,
-            ToDoDialogFragment.TAG
+            AddRestaurantDialogFragment.TAG
         )
     }
 

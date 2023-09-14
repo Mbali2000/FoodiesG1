@@ -5,14 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.foodiesg1.databinding.FragmentToDoDialogBinding
+import com.example.foodiesg1.databinding.FragmentAddRestaurantDialogBinding
 import com.example.foodiesg1.utils.model.ToDoData
 import com.google.android.material.textfield.TextInputEditText
 
 
-class ToDoDialogFragment : DialogFragment() {
+class AddRestaurantDialogFragment : DialogFragment() {
 
-    private lateinit var binding:FragmentToDoDialogBinding
+    private lateinit var binding:FragmentAddRestaurantDialogBinding
     private var listener : OnDialogNextBtnClickListener? = null
     private var toDoData: ToDoData? = null
 
@@ -25,7 +25,7 @@ class ToDoDialogFragment : DialogFragment() {
         const val TAG = "DialogFragment"
         @JvmStatic
         fun newInstance(taskId: String, task: String) =
-            ToDoDialogFragment().apply {
+            AddRestaurantDialogFragment().apply {
                 arguments = Bundle().apply {
                     putString("taskId", taskId)
                     putString("task", task)
@@ -41,7 +41,7 @@ class ToDoDialogFragment : DialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        binding = FragmentToDoDialogBinding.inflate(inflater , container,false)
+        binding = FragmentAddRestaurantDialogBinding.inflate(inflater , container,false)
         return binding.root
     }
 

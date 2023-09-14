@@ -17,15 +17,25 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toTopOf="parent" />-->
 
+<!--    <ImageView-->
+<!--        android:id="@+id/addTaskBtn"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:layout_marginEnd="24dp"-->
+<!--        android:src="@drawable/ic_baseline_add_"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
     <ImageView
         android:id="@+id/addTaskBtn"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_gravity="end"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:src="@drawable/ic_baseline_add_"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints" />
 
 
 <!--    <ImageView-->
@@ -63,18 +73,31 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@id/addTaskBtn" />-->
 
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/mainRecyclerView"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_marginTop="42dp"-->
+<!--        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/addTaskBtn"-->
+<!--        app:spanCount="2" /> &lt;!&ndash; Change the spanCount to your desired number of columns &ndash;&gt;-->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="42dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addTaskBtn"
-        app:spanCount="2" /> <!-- Change the spanCount to your desired number of columns -->
+        app:spanCount="2"
+        tools:ignore="MissingConstraints" />
 
 
 

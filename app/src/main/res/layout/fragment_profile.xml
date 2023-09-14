@@ -21,19 +21,17 @@
             android:layout_marginTop="10dp"
             android:src="@drawable/person_icon" />
 
-        <TextView
-            android:id="@+id/shop_name"
+
+        <Button
+            android:id="@+id/btn_photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Food Shop"
-            android:textColor="#0846BA"
-            android:textSize="20dp"
-            android:textStyle="bold"/>
-
+            android:backgroundTint="@color/blue"
+            android:text="Change Photo"
+            android:visibility="visible"/>
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="5dp"
             android:background="#0846BA"
             android:layout_marginTop="10dp" />
 
@@ -66,7 +64,7 @@
 
 
 
-        <TextView
+        <EditText
             android:id="@+id/shopname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -107,7 +105,7 @@
             android:textSize="18dp"
             android:layout_marginLeft="5dp"/>
 
-        <TextView
+        <EditText
             android:id="@+id/shopemail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -123,45 +121,96 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="90dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_below="@+id/third">
+        android:orientation="horizontal"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:id="@+id/fourth"
+        android:layout_below="@+id/third"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/baseline_add_24"/>
 
         <TextView
-            android:id="@+id/edit_profile"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:background="@drawable/bg_btn"
-            android:text="Edit profile"
-            android:gravity="center"
-            android:textColor="#0846BA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:textSize="18dp"
-            android:drawableLeft="@drawable/ic_baseline_edit_24"
-            android:paddingLeft="10dp"
-            android:layout_marginLeft="-10dp"/>
+            android:layout_marginLeft="5dp"/>
 
-        <TextView
-            android:id="@+id/change_password"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:background="@drawable/bg_btn"
-            android:text="Change Password"
-            android:gravity="center"
-            android:textColor="#0846BA"
+        <EditText
+            android:id="@+id/shop_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000000"
+            android:textStyle="normal"
+            android:textColor="@android:color/darker_gray"
             android:textSize="18dp"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:paddingLeft="20dp"
-            android:layout_marginLeft="-10dp"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginLeft="25dp"
+            />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:id="@+id/fifth"
+        android:layout_below="@+id/fourth"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_baseline_lock_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:layout_marginLeft="5dp"/>
+
+        <EditText
+            android:id="@+id/shop_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="000000"
+            android:textStyle="normal"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="18dp"
+            android:layout_marginLeft="25dp"
+            />
+
+    </LinearLayout>
+
+
+
+
+
     <View
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="5dp"
         android:background="#0846BA"
         android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btn_editprofie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
+        android:text="Edit Profile"
+        android:layout_gravity="center_horizontal"/>
 
 
 

@@ -97,7 +97,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
 
         auth = FirebaseAuth.getInstance()
         authId = auth.currentUser!!.uid
-        database = Firebase.database.reference.child("Tasks")
+        database = Firebase.database.reference.child("Restaurants")
             .child(authId)
 
 
@@ -116,7 +116,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
             .push().setValue(todoTask)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-                    Toast.makeText(context, "Task Added Successfully", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Restaurant Added Successfully", Toast.LENGTH_SHORT).show()
                     todoEdit.text = null
 
                 } else {

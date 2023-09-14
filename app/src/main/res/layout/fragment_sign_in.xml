@@ -7,16 +7,16 @@
     tools:context=".fragments.SignInFragment">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/design_one"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="200dp"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/design_one"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageView
         android:id="@+id/imageView2"
@@ -29,17 +29,17 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
-        android:layout_height="210dp"
-        android:layout_marginStart="12dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/design_two"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView3"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="210dp"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:scaleType="fitXY"-->
+<!--        android:src="@drawable/design_two"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 
 
     <TextView
@@ -50,7 +50,7 @@
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/inter_extra_bold"
         android:text="Sign In"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodiesg1.databinding.FragmentHomeBinding
-import com.example.foodiesg1.utils.adapter.TaskAdapter
+import com.example.foodiesg1.utils.adapter.restaurantAdapter
 import com.example.foodiesg1.utils.model.ToDoData
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -21,7 +21,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
 class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClickListener,
-    TaskAdapter.TaskAdapterInterface {
+    restaurantAdapter.restaurantAdapterInterface {
 
     private val TAG = "HomeFragment"
     private lateinit var binding: FragmentHomeBinding
@@ -30,7 +30,7 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
     private lateinit var auth: FirebaseAuth
     private lateinit var authId: String
 
-    private lateinit var taskAdapter: TaskAdapter
+    private lateinit var restaurantAdapter: restaurantAdapter
     private lateinit var toDoItemList: MutableList<ToDoData>
 
     override fun onCreateView(
@@ -48,10 +48,10 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
         init()
 
         //get data from firebase
-        getTaskFromFirebase()
+        getrestaurantFromFirebase()
 
 
-        binding.addTaskBtn.setOnClickListener {
+        binding.addrestaurantBtn.setOnClickListener {
 
             if (frag != null)
                 childFragmentManager.beginTransaction().remove(frag!!).commit()
@@ -66,22 +66,22 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
         }
     }
 
-    private fun getTaskFromFirebase() {
+    private fun getrestaurantFromFirebase() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 toDoItemList.clear()
-                for (taskSnapshot in snapshot.children) {
-                    val todoTask =
-                        taskSnapshot.key?.let { ToDoData(it, taskSnapshot.value.toString()) }
+                for (restaurantSnapshot in snapshot.children) {
+                    val todorestaurant =
+                        restaurantSnapshot.key?.let { ToDoData(it, restaurantSnapshot.value.toString()) }
 
-                    if (todoTask != null) {
-                        toDoItemList.add(todoTask)
+                    if (todorestaurant != null) {
+                        toDoItemList.add(todorestaurant)
                     }
 
                 }
                 Log.d(TAG, "onDataChange: " + toDoItemList)
-                taskAdapter.notifyDataSetChanged()
+                restaurantAdapter.notifyDataSetChanged()
 
             }
 
@@ -105,15 +105,15 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(context)
 
         toDoItemList = mutableListOf()
-        taskAdapter = TaskAdapter(toDoItemList)
-        taskAdapter.setListener(this)
-        binding.mainRecyclerView.adapter = taskAdapter
+        restaurantAdapter = restaurantAdapter(toDoItemList)
+        restaurantAdapter.setListener(this)
+        binding.mainRecyclerView.adapter = restaurantAdapter
     }
 
-    override fun saveTask(todoTask: String, todoEdit: TextInputEditText) {
+    override fun saverestaurant(todorestaurant: String, todoEdit: TextInputEditText) {
 
         database
-            .push().setValue(todoTask)
+            .push().setValue(todorestaurant)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     Toast.makeText(context, "Restaurant Added Successfully", Toast.LENGTH_SHORT).show()
@@ -127,9 +127,9 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
 
     }
 
-    override fun updateTask(toDoData: ToDoData, todoEdit: TextInputEditText) {
+    override fun updaterestaurant(toDoData: ToDoData, todoEdit: TextInputEditText) {
         val map = HashMap<String, Any>()
-        map[toDoData.taskId] = toDoData.task
+        map[toDoData.restaurantId] = toDoData.restaurant
         database.updateChildren(map).addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(context, "Updated Successfully", Toast.LENGTH_SHORT).show()
@@ -141,7 +141,7 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
     }
 
     override fun onDeleteItemClicked(toDoData: ToDoData, position: Int) {
-        database.child(toDoData.taskId).removeValue().addOnCompleteListener {
+        database.child(toDoData.restaurantId).removeValue().addOnCompleteListener {
             if (it.isSuccessful) {
                 Toast.makeText(context, "Deleted Successfully", Toast.LENGTH_SHORT).show()
             } else {
@@ -154,7 +154,7 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
         if (frag != null)
             childFragmentManager.beginTransaction().remove(frag!!).commit()
 
-        frag = AddRestaurantDialogFragment.newInstance(toDoData.taskId, toDoData.task)
+        frag = AddRestaurantDialogFragment.newInstance(toDoData.restaurantId, toDoData.restaurant)
         frag!!.setListener(this)
         frag!!.show(
             childFragmentManager,

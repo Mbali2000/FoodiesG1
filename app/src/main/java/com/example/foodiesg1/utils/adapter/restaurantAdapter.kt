@@ -7,32 +7,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foodiesg1.databinding.EachTodoItemBinding
 import com.example.foodiesg1.utils.model.ToDoData
 
-class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+class restaurantAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapter<restaurantAdapter.restaurantViewHolder>() {
 
-    private  val TAG = "TaskAdapter"
-    private var listener:TaskAdapterInterface? = null
-    fun setListener(listener:TaskAdapterInterface){
+    private  val TAG = "restaurantAdapter"
+    private var listener:restaurantAdapterInterface? = null
+    fun setListener(listener:restaurantAdapterInterface){
         this.listener = listener
     }
-    class TaskViewHolder(val binding: EachTodoItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class restaurantViewHolder(val binding: EachTodoItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): restaurantViewHolder {
         val binding =
             EachTodoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TaskViewHolder(binding)
+        return restaurantViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: restaurantViewHolder, position: Int) {
         with(holder) {
             with(list[position]) {
-                binding.todoTask.text = this.task
+                binding.todorestaurant.text = this.restaurant
 
                 Log.d(TAG, "onBindViewHolder: "+this)
-                binding.editTask.setOnClickListener {
+                binding.editrestaurant.setOnClickListener {
                     listener?.onEditItemClicked(this , position)
                 }
 
-                binding.deleteTask.setOnClickListener {
+                binding.deleterestaurant.setOnClickListener {
                     listener?.onDeleteItemClicked(this , position)
                 }
             }
@@ -43,7 +43,7 @@ class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapte
         return list.size
     }
 
-    interface TaskAdapterInterface{
+    interface restaurantAdapterInterface{
         fun onDeleteItemClicked(toDoData: ToDoData , position : Int)
         fun onEditItemClicked(toDoData: ToDoData , position: Int)
     }

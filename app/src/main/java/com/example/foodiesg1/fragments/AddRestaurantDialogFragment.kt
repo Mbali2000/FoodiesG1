@@ -24,11 +24,11 @@ class AddRestaurantDialogFragment : DialogFragment() {
     companion object {
         const val TAG = "DialogFragment"
         @JvmStatic
-        fun newInstance(taskId: String, task: String) =
+        fun newInstance(restaurantId: String, restaurant: String) =
             AddRestaurantDialogFragment().apply {
                 arguments = Bundle().apply {
-                    putString("taskId", taskId)
-                    putString("task", task)
+                    putString("restaurantId", restaurantId)
+                    putString("restaurant", restaurant)
                 }
             }
     }
@@ -50,8 +50,8 @@ class AddRestaurantDialogFragment : DialogFragment() {
 
         if (arguments != null){
 
-            toDoData = ToDoData(arguments?.getString("taskId").toString() ,arguments?.getString("task").toString())
-            binding.todoEt.setText(toDoData?.task)
+            toDoData = ToDoData(arguments?.getString("restaurantId").toString() ,arguments?.getString("restaurant").toString())
+            binding.todoEt.setText(toDoData?.restaurant)
         }
 
 
@@ -61,13 +61,13 @@ class AddRestaurantDialogFragment : DialogFragment() {
 
         binding.todoNextBtn.setOnClickListener {
 
-            val todoTask = binding.todoEt.text.toString()
-            if (todoTask.isNotEmpty()){
+            val todorestaurant = binding.todoEt.text.toString()
+            if (todorestaurant.isNotEmpty()){
                 if (toDoData == null){
-                    listener?.saveTask(todoTask , binding.todoEt)
+                    listener?.saverestaurant(todorestaurant , binding.todoEt)
                 }else{
-                    toDoData!!.task = todoTask
-                    listener?.updateTask(toDoData!!, binding.todoEt)
+                    toDoData!!.restaurant = todorestaurant
+                    listener?.updaterestaurant(toDoData!!, binding.todoEt)
                 }
 
             }
@@ -75,8 +75,8 @@ class AddRestaurantDialogFragment : DialogFragment() {
     }
 
     interface OnDialogNextBtnClickListener{
-        fun saveTask(todoTask:String , todoEdit:TextInputEditText)
-        fun updateTask(toDoData: ToDoData , todoEdit:TextInputEditText)
+        fun saverestaurant(todorestaurant:String , todoEdit:TextInputEditText)
+        fun updaterestaurant(toDoData: ToDoData , todoEdit:TextInputEditText)
     }
 
 }

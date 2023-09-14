@@ -4,7 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foodiesg1.databinding.EachTodoItemBinding
+import com.example.foodiesg1.databinding.EachRestaurantBinding
 import com.example.foodiesg1.utils.model.ToDoData
 
 class restaurantAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapter<restaurantAdapter.restaurantViewHolder>() {
@@ -14,11 +14,11 @@ class restaurantAdapter(private val list: MutableList<ToDoData>) : RecyclerView.
     fun setListener(listener:restaurantAdapterInterface){
         this.listener = listener
     }
-    class restaurantViewHolder(val binding: EachTodoItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class restaurantViewHolder(val binding: EachRestaurantBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): restaurantViewHolder {
         val binding =
-            EachTodoItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            EachRestaurantBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return restaurantViewHolder(binding)
     }
 

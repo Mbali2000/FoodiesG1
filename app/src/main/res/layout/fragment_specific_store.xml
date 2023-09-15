@@ -72,6 +72,8 @@
 
         </LinearLayout>
 
+
+
         <ImageButton
             android:id="@+id/edit_shop_btn"
             android:layout_width="48dp"
@@ -81,6 +83,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:contentDescription="@string/edit_shop"/>
+
+
 
     </LinearLayout>
     <View
@@ -353,6 +357,15 @@
         android:background="@color/white"
         android:layout_marginStart="10dp"
         android:contentDescription="@string/add_review"/>
+
+    <ImageButton
+        android:id="@+id/refresh_button"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        android:rotation="180"
+        android:contentDescription="@string/more"
+        android:layout_marginStart="155dp"/>
 
 
     </LinearLayout>

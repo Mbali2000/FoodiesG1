@@ -12,13 +12,15 @@ import com.example.foodiesg1.R
 import com.example.foodiesg1.databinding.FragmentOverviewBinding
 import com.example.foodiesg1.databinding.FragmentSpecificStoreBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SpecificStoreFragment : Fragment() {
 
     private lateinit var  auth: FirebaseAuth
     private lateinit var  navControl: NavController
     private lateinit var  binding: FragmentSpecificStoreBinding
-
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,11 @@ class SpecificStoreFragment : Fragment() {
 
         init(view)
         registerEvents()
+
+        binding.refreshButton.setOnClickListener{
+            val shop = "afriquezeen"
+            readData(shop)
+        }
     }
 
     private fun init(view:View){
@@ -48,6 +55,19 @@ class SpecificStoreFragment : Fragment() {
             //val shop1 = binding.shop1Name.text.toString().trim()
             Toast.makeText(context, "Back button clicked", Toast.LENGTH_LONG).show()
             navControl.navigate(R.id.action_specificStoreFragment_to_overviewFragment)
+        }
+    }
+
+    private fun readData(storeName: String){
+        databaseReference = FirebaseDatabase.getInstance().getReference("menus")//have to change string
+        databaseReference.child(storeName).get().addOnSuccessListener {
+            if (it.exists()){
+                val shop = it.child("afriquezeen").value
+                Toast.makeText(context, "Shop found", Toast.LENGTH_SHORT).show()
+                binding.shopNameTextview.text = shop.toString()
+            } else {
+                Toast.makeText(context, "Shop name not found", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

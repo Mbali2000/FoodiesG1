@@ -12,7 +12,7 @@
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/shape_toolbar02">
+        android:background="@drawable/logo2">
 
         <!--Back button-->
         <ImageButton
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Book Details"
+            android:text="Food Details"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 
@@ -82,7 +82,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/pdfRl"
-                    android:text="Title of Book"/>
+                    android:text="Name of Food"/>
 
                 <!--Table-->
                 <TableLayout
@@ -99,7 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
-                            android:text="Category"/>
+                            android:text="Restaurant(Category)"/>
 
                         <TextView
                             android:id="@+id/categoryTv"
@@ -232,7 +232,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="The description of the book"
+                android:text="The description of the food"
                 android:textColor="@color/black"/>
 
             <View
@@ -300,7 +300,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_book_white"
-            android:text="View Menu Item"
+            android:text="View menu item"
             android:textColor="@color/white"
             android:background="@color/blue_700"/>
 
@@ -311,7 +311,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_download_white"
-            android:text="Download"
+            android:text="Download Menu Item"
             android:textColor="@color/white"
             android:background="@color/blue_700"/>
 
@@ -322,9 +322,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:drawableTop="@drawable/ic_favorite_border_white"
-            android:text="Add Favorite"
+            android:text="Add To Favorites"
             android:textColor="@color/white"
-
             android:background="@color/blue_700"/>
 
     </LinearLayout>
@@ -333,3 +332,4 @@
 
 
 </RelativeLayout>
+

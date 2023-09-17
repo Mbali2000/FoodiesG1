@@ -215,7 +215,7 @@ public class MyApplication extends Application {
     public static void loadCategory(String categoryId, TextView categoryTv) {
         //get category using categoryId
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Categories");
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Restaurants");
         ref.child(categoryId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

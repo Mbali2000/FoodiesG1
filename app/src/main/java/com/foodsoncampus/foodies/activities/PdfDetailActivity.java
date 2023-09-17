@@ -36,8 +36,11 @@ import com.foodsoncampus.foodies.models.ModelComment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import android.widget.RatingBar;
 
 public class PdfDetailActivity extends AppCompatActivity {
+
+
 
     //view binding
     private ActivityPdfDetailBinding binding;
@@ -58,6 +61,8 @@ public class PdfDetailActivity extends AppCompatActivity {
     private ArrayList<ModelComment> commentArrayList;
     //adapter to set to recyclerview
     private AdapterComment adapterComment;
+
+    private float userRating = 0.0f; // Add this variable to store the user's rating
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +162,9 @@ public class PdfDetailActivity extends AppCompatActivity {
         });
 
 
+        
+
+
     }
 
     private void loadComments() {
@@ -247,7 +255,7 @@ public class PdfDetailActivity extends AppCompatActivity {
         hashMap.put("uid", "" + firebaseAuth.getUid());
 
         //DB path to add data into it
-        //Menu > bookId > Comments > commentId > commentData
+        //Books > bookId > Comments > commentId > commentData
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Menu");
         ref.child(bookId).child("Comments").child(timestamp)
                 .setValue(hashMap)
@@ -268,6 +276,8 @@ public class PdfDetailActivity extends AppCompatActivity {
                 });
 
     }
+
+
 
 
     //request storage permission

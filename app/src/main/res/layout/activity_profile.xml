@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="165dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/logo"/>
+        android:background="@drawable/logo2"/>
 
     <!--Toolbar-->
     <RelativeLayout
@@ -50,13 +50,13 @@
 
     </RelativeLayout>
 
+    <!--Shapeable image view with rounded corners for profile image-->
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_rect01"
-        android:layout_marginTop="180dp"/>
+        android:layout_marginTop="180dp"
+        android:background="@drawable/shape_rect01" />
 
-    <!--Shapeable image view with rounded corners for profile image-->
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profileIv"
         android:layout_width="120dp"
@@ -137,7 +137,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Member"
+                android:text="Date Joined"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -165,7 +165,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Favorite Menu Items"
+                android:text="Favorite Foods"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textAlignment="center"
@@ -225,7 +225,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/view1"
-        android:text="Favorite Books"
+        android:text="Favorite Foods"
         android:padding="5dp"
         android:textColor="@color/black"
         android:textStyle="bold"/>

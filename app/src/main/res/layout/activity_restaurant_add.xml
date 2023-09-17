@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back01"
-    tools:context=".activities.CategoryAddActivity">
+    tools:context=".activities.RestaurantAddActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/shape_toolbar01">
+        android:background="@drawable/logo2">
 
         <ImageButton
             android:id="@+id/backBtn"
@@ -36,7 +36,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Add a new Category"
+            android:text="New Restaurant (Enter name and operating hours)"
             android:textColor="@color/white"
             android:textSize="28sp"/>
 
@@ -53,18 +53,32 @@
 
         <EditText
             android:id="@+id/categoryEt"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_edittext01"
             android:drawableStart="@drawable/ic_category_gray"
             android:drawablePadding="10dp"
-            android:hint="Category Title"
+            android:hint="Please enter new restaurant details"
             android:inputType="textPersonName|textCapWords"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/gray01"/>
 
+
+
+
     </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+
+
+
 
     <!--Add category button-->
     <Button

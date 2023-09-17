@@ -86,9 +86,7 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
 
 
         //load further details like category, pdf from url, pdf size in seprate functions
-//        MyApplication.loadCategory(
-//                ""+categoryId,
-//                holder.categoryTv);
+
 
         //we dont need page number here, pass null
         MyApplication.loadPdfFromUrlSinglePage(
@@ -180,8 +178,7 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
         //UI Views of row_pdf_admin.xml
         PDFView pdfView;
         ProgressBar progressBar;
-        TextView titleTv, descriptionTv;
-
+        TextView titleTv, descriptionTv, categoryTv, sizeTv, dateTv;
         ImageButton moreBtn;
 
         public HolderPdfAdmin(@NonNull  View itemView) {
@@ -192,6 +189,7 @@ public class AdapterPdfAdmin extends RecyclerView.Adapter<AdapterPdfAdmin.Holder
             progressBar = binding.progressBar;
             titleTv = binding.titleTv;
             descriptionTv = binding.descriptionTv;
+
             moreBtn = binding.moreBtn;
 
         }

@@ -196,7 +196,7 @@ public class PdfAddActivity extends AppCompatActivity {
         hashMap.put("viewsCount", 0);
         hashMap.put("downloadsCount", 0);
 
-        //db reference: DB > Menu
+        //db reference: DB > Books
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Menu");
         ref.child(""+timestamp)
                 .setValue(hashMap)
@@ -265,7 +265,7 @@ public class PdfAddActivity extends AppCompatActivity {
 
         //alert dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Pick Category")
+        builder.setTitle("Pick Restaurant (Category)")
                 .setItems(categoriesArray, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

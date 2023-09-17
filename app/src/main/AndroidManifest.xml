@@ -27,8 +27,9 @@
         <activity android:name=".activities.PdfDetailActivity" />
         <activity android:name=".activities.PdfEditActivity" />
         <activity android:name=".activities.PdfListAdminActivity" />
+        <activity android:name=".activities.PdfListUserActivity" />
         <activity android:name=".activities.PdfAddActivity" />
-        <activity android:name=".activities.CategoryAddActivity" />
+        <activity android:name=".activities.RestaurantAddActivity" />
         <activity android:name=".activities.DashboardAdminActivity" />
         <activity android:name=".activities.DashboardUserActivity" />
         <activity android:name=".activities.LoginActivity" />

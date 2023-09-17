@@ -14,14 +14,14 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.foodsoncampus.foodies.databinding.ActivityCategoryAddBinding;
+import com.foodsoncampus.foodies.databinding.ActivityRestaurantAddBinding;
 
 import java.util.HashMap;
 
-public class CategoryAddActivity extends AppCompatActivity {
+public class RestaurantAddActivity extends AppCompatActivity {
 
     //view binding
-    private ActivityCategoryAddBinding binding;
+    private ActivityRestaurantAddBinding binding;
 
     //firebase auth
     private FirebaseAuth firebaseAuth;
@@ -32,7 +32,7 @@ public class CategoryAddActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityCategoryAddBinding.inflate(getLayoutInflater());
+        binding = ActivityRestaurantAddBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         //init firebase auth
@@ -51,7 +51,7 @@ public class CategoryAddActivity extends AppCompatActivity {
             }
         });
 
-        //handle click, begin upload category
+        //handle click, begin upload restaurant
         binding.submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,15 +64,18 @@ public class CategoryAddActivity extends AppCompatActivity {
 
     private String category = "";
 
+
     private void validateData() {
         /*Before adding validate data*/
 
         //get data
          category = binding.categoryEt.getText().toString().trim();
+
          //validate if not empty
         if (TextUtils.isEmpty(category)){
-            Toast.makeText(this, "Please enter category...!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter Restaurant (category)...!", Toast.LENGTH_SHORT).show();
         }
+
         else {
             addCategoryFirebase();
         }
@@ -80,7 +83,7 @@ public class CategoryAddActivity extends AppCompatActivity {
 
     private void addCategoryFirebase() {
         //show progress
-        progressDialog.setMessage("Adding category...");
+        progressDialog.setMessage("Adding Restaurant...");
         progressDialog.show();
 
         //get timestamp
@@ -93,7 +96,7 @@ public class CategoryAddActivity extends AppCompatActivity {
         hashMap.put("timestamp", timestamp);
         hashMap.put("uid", ""+firebaseAuth.getUid());
 
-        //add to firebase db..... Database Root > Restaurants > categoryId > category info
+        //add to firebase db..... Database Root > Categories > categoryId > category info
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Restaurants");
         ref.child(""+timestamp)
                 .setValue(hashMap)
@@ -102,7 +105,7 @@ public class CategoryAddActivity extends AppCompatActivity {
                     public void onSuccess(Void unused) {
                         //category add success
                         progressDialog.dismiss();
-                        Toast.makeText(CategoryAddActivity.this, "Category added successfully...", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RestaurantAddActivity.this, "Restaurant  added successfully...", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -110,7 +113,7 @@ public class CategoryAddActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         //category add failed
                         progressDialog.dismiss();
-                        Toast.makeText(CategoryAddActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RestaurantAddActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }

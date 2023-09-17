@@ -11,7 +11,7 @@
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@drawable/shape_toolbar02">
+        android:background="@drawable/logo2">
 
         <!--Back button-->
         <ImageButton
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"
-            android:text="View Menu"
+            android:text="View Menu Item"
             android:textColor="@color/white"
             android:textStyle="bold"/>
 

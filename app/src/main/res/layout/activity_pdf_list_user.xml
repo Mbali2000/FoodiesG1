@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back01"
-    tools:context=".activities.PdfListAdminActivity">
+    tools:context=".activities.PdfListUserActivity">
 
 
     <!--Toolbar-->
@@ -31,7 +31,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Menu Items"
-            android:textSize="10dp"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
             android:layout_centerHorizontal="true"
@@ -44,7 +43,6 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Restaurant"
-            android:textSize="8dp"
             android:textColor="@color/white"
             android:layout_below="@id/titleTv"/>
 
@@ -72,10 +70,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookRv"
         android:layout_width="match_parent"
-        android:layout_below="@id/searchEt"
-        android:layout_margin="10dp"
         android:layout_height="match_parent"
+        android:layout_below="@id/searchEt"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/row_pdf_admin"/>
+        tools:listitem="@layout/row_pdf_user" />
 
 </RelativeLayout>

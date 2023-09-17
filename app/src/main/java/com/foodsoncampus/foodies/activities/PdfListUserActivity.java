@@ -10,18 +10,20 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.foodsoncampus.foodies.adapters.AdapterPdfAdmin;
+import com.foodsoncampus.foodies.adapters.AdapterPdfUser;
+import com.foodsoncampus.foodies.databinding.ActivityPdfListAdminBinding;
+import com.foodsoncampus.foodies.databinding.ActivityPdfListUserBinding;
+import com.foodsoncampus.foodies.models.ModelPdf;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.foodsoncampus.foodies.adapters.AdapterPdfAdmin;
-import com.foodsoncampus.foodies.databinding.ActivityPdfListAdminBinding;
-import com.foodsoncampus.foodies.models.ModelPdf;
 
 import java.util.ArrayList;
 
-public class PdfListAdminActivity extends AppCompatActivity {
+public class PdfListUserActivity extends AppCompatActivity {
 
     //viewbinding
     private ActivityPdfListAdminBinding binding;
@@ -29,7 +31,7 @@ public class PdfListAdminActivity extends AppCompatActivity {
     //arraylist to hold list of data of type ModelPdf
     private ArrayList<ModelPdf> pdfArrayList;
     //adapter
-    private AdapterPdfAdmin adapterPdfAdmin;
+    private AdapterPdfUser adapterPdfUser;
 
     private String categoryId, categoryTitle;
 
@@ -62,7 +64,7 @@ public class PdfListAdminActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 //search as and when user type each letter
                 try {
-                    adapterPdfAdmin.getFilter().filter(s);
+                    adapterPdfUser.getFilter().filter(s);
                 }
                 catch (Exception e){
                     Log.d(TAG, "onTextChanged: "+e.getMessage());
@@ -103,9 +105,8 @@ public class PdfListAdminActivity extends AppCompatActivity {
                             Log.d(TAG, "onDataChange: "+model.getId()+" "+model.getTitle());
                         }
                         //setup adapter
-                        adapterPdfAdmin = new AdapterPdfAdmin(PdfListAdminActivity.this, pdfArrayList);
-                        binding.bookRv.setAdapter(adapterPdfAdmin);
-                        binding.bookRv.setAdapter(adapterPdfAdmin);
+                        adapterPdfUser = new AdapterPdfUser(PdfListUserActivity.this, pdfArrayList);
+                        binding.bookRv.setAdapter(adapterPdfUser);
                     }
 
                     @Override

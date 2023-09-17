@@ -98,7 +98,7 @@ public class PdfEditActivity extends AppCompatActivity {
                         binding.titleEt.setText(title);
                         binding.descriptionEt.setText(description);
 
-                        Log.d(TAG, "onDataChange: Loading Book Category Info");
+                        Log.d(TAG, "onDataChange: Loading Info");
                         DatabaseReference refBookCategory = FirebaseDatabase.getInstance().getReference("Restaurants");
                         refBookCategory.child(selectedCategoryId)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -193,7 +193,7 @@ public class PdfEditActivity extends AppCompatActivity {
 
         //Alert Dialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Chooose Category")
+        builder.setTitle("Choose Restaurant (Category)")
                 .setItems(categoriesArray, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -208,7 +208,7 @@ public class PdfEditActivity extends AppCompatActivity {
     }
 
     private void loadCategories() {
-        Log.d(TAG, "loadCategories: Loading categories...");
+        Log.d(TAG, "loadCategories: Loading Restaurants(Category)...");
 
         categoryIdArrayList = new ArrayList<>();
         categoryTitleArraylist = new ArrayList<>();

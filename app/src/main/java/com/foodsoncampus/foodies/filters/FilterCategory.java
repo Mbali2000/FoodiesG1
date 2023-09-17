@@ -2,7 +2,7 @@ package com.foodsoncampus.foodies.filters;
 
 import android.widget.Filter;
 
-import com.foodsoncampus.foodies.adapters.AdapterCategory;
+import com.foodsoncampus.foodies.adapters.AdapterRestaurant;
 import com.foodsoncampus.foodies.models.ModelCategory;
 
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ public class FilterCategory extends Filter {
     //arraylist in which we want to search
     ArrayList<ModelCategory> filterList;
     //adapter in which filter need to be implemented
-    AdapterCategory adapterCategory;
+    AdapterRestaurant adapterRestaurant;
 
     //constructor
-    public FilterCategory(ArrayList<ModelCategory> filterList, AdapterCategory adapterCategory) {
+    public FilterCategory(ArrayList<ModelCategory> filterList, AdapterRestaurant adapterRestaurant) {
         this.filterList = filterList;
-        this.adapterCategory = adapterCategory;
+        this.adapterRestaurant = adapterRestaurant;
     }
 
 
@@ -54,9 +54,9 @@ public class FilterCategory extends Filter {
     @Override
     protected void publishResults(CharSequence constraint, FilterResults results) {
         //apply fiter cahnges
-        adapterCategory.categoryArrayList = (ArrayList<ModelCategory>)results.values;
+        adapterRestaurant.categoryArrayList = (ArrayList<ModelCategory>)results.values;
 
         //notify cahnges
-        adapterCategory.notifyDataSetChanged();
+        adapterRestaurant.notifyDataSetChanged();
     }
 }

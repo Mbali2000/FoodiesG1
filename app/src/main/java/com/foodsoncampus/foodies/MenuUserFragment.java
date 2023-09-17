@@ -17,17 +17,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.foodsoncampus.foodies.adapters.AdapterPdfUser;
-import com.foodsoncampus.foodies.databinding.FragmentBooksUserBinding;
+import com.foodsoncampus.foodies.databinding.FragmentMenuUserBinding;
 import com.foodsoncampus.foodies.models.ModelPdf;
 
 import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BooksUserFragment#newInstance} factory method to
+ * Use the {@link MenuUserFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BooksUserFragment extends Fragment {
+public class MenuUserFragment extends Fragment {
 
     //that we passed while creating instance of this fragment
     private String categoryId;
@@ -38,17 +38,17 @@ public class BooksUserFragment extends Fragment {
     private AdapterPdfUser adapterPdfUser;
 
     //view binding
-    private FragmentBooksUserBinding binding;
+    private FragmentMenuUserBinding binding;
 
     private static final String TAG = "BOOKS_USER_TAG";
 
-    public BooksUserFragment() {
+    public MenuUserFragment() {
         // Required empty public constructor
     }
 
 
-    public static BooksUserFragment newInstance(String categoryId, String category, String uid) {
-        BooksUserFragment fragment = new BooksUserFragment();
+    public static MenuUserFragment newInstance(String categoryId, String category, String uid) {
+        MenuUserFragment fragment = new MenuUserFragment();
         Bundle args = new Bundle();
         args.putString("categoryId", categoryId);
         args.putString("category", category);
@@ -71,7 +71,7 @@ public class BooksUserFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate/bind the layout for this fragment
-        binding = FragmentBooksUserBinding.inflate(LayoutInflater.from(getContext()), container, false);
+        binding = FragmentMenuUserBinding.inflate(LayoutInflater.from(getContext()), container, false);
 
         Log.d(TAG, "onCreateView: Category: "+category);
         if (category.equals("All")){

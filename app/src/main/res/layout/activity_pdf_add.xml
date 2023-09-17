@@ -13,7 +13,7 @@
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/shape_toolbar01">
+        android:background="@drawable/logo2">
 
         <!--Back button-->
         <ImageButton
@@ -42,7 +42,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Add a New Book"
+            android:text="Add a New Menu Item"
             android:textColor="@color/white"
             android:textSize="28sp"/>
 
@@ -76,7 +76,7 @@
             android:background="@drawable/shape_edittext01"
             android:drawableStart="@drawable/ic_pdf_gray"
             android:drawablePadding="10dp"
-            android:hint="Book Title"
+            android:hint="Name of food"
             android:inputType="textPersonName|textCapWords"
             android:padding="10dp"
             android:textColor="@color/black"
@@ -104,7 +104,7 @@
             android:background="@drawable/shape_edittext01"
             android:drawableStart="@drawable/ic_pdf_gray"
             android:drawablePadding="10dp"
-            android:hint="Book Description"
+            android:hint="Food Description"
             android:inputType="textMultiLine|textCapSentences"
             android:padding="10dp"
             android:textSize="16sp"
@@ -127,7 +127,7 @@
         android:drawableEnd="@drawable/ic_down_gray"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
-        android:hint="Book Category"
+        android:hint="Select Restaurant to add to"
         android:padding="10dp"
         android:textColorHint="@color/gray01"
         android:textColor="@color/black"
@@ -142,7 +142,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/shape_button02"
         android:text="Upload"
-        android:textColor="@color/white"/>
+        android:textColor="@color/blue_700"/>
 
 </RelativeLayout>

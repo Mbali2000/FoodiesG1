@@ -8,6 +8,8 @@
     android:padding="20dp"
     tools:context=".activities.MainActivity">
 
+
+
     <ImageView
         android:id="@+id/iconIv"
         android:layout_width="200dp"

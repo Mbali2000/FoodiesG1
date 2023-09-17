@@ -1,8 +1,6 @@
 package com.foodsoncampus.foodies.adapters;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +25,7 @@ import com.foodsoncampus.foodies.models.ModelCategory;
 
 import java.util.ArrayList;
 
-public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.HolderCategory> implements Filterable {
+public class AdapterRestaurant extends RecyclerView.Adapter<AdapterRestaurant.HolderCategory> implements Filterable {
 
     private Context context;
     public ArrayList<ModelCategory> categoryArrayList, filterList;
@@ -38,7 +36,7 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.Holder
     //instance of our filter class
     private FilterCategory filter;
 
-    public AdapterCategory(Context context, ArrayList<ModelCategory> categoryArrayList) {
+    public AdapterRestaurant(Context context, ArrayList<ModelCategory> categoryArrayList) {
         this.context = context;
         this.categoryArrayList = categoryArrayList;
         this.filterList = categoryArrayList;

@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/shape_toolbar01">
+        android:background="@drawable/logo2">
 
         <!--Back button-->
         <ImageButton
@@ -40,7 +40,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Edit Book Info"
+            android:text="Edit Menu Items Info"
             android:textColor="@color/white"
             android:textSize="28sp"/>
 
@@ -73,7 +73,7 @@
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_pdf_gray"
                     android:drawablePadding="10dp"
-                    android:hint="Book Title"
+                    android:hint="Name of food"
                     android:inputType="textPersonName|textCapSentences"
                     android:padding="10dp"
                     android:textColor="@color/black"
@@ -102,7 +102,7 @@
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_pdf_gray"
                     android:drawablePadding="10dp"
-                    android:hint="Book Description"
+                    android:hint="Food Description"
                     android:gravity="top"
                     android:inputType="textMultiLine|textCapSentences"
                     android:padding="10dp"
@@ -126,7 +126,7 @@
                 android:drawableEnd="@drawable/ic_down_gray"
                 android:drawablePadding="10dp"
                 android:gravity="center_vertical"
-                android:hint="Book Category"
+                android:hint="Select restaurant to add to"
                 android:padding="10dp"
                 android:textColor="@color/black"
                 android:textColorHint="@color/gray01"

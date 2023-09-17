@@ -11,7 +11,7 @@
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/shape_toolbar01">
+        android:background="@drawable/logo2">
 
         <ImageButton
             android:id="@+id/backBtn"

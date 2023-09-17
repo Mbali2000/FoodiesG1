@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
     //firebase current user
     private FirebaseUser firebaseUser;
 
-    //arraylist to hold the Menu
+    //arraylist to hold the books
     private ArrayList<ModelPdf> pdfArrayList;
     //adapter to set in recyclerview
     private AdapterPdfFavorite adapterPdfFavorite;

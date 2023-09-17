@@ -50,9 +50,10 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false)
-        
+
+        binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        //var dt = dateFormat.format(calendar.time)
+
         
         binding.btnPhoto.setOnClickListener(){
             var myfileintent = Intent(Intent.ACTION_GET_CONTENT)
@@ -72,7 +73,12 @@ class ProfileFragment : Fragment() {
             updata_data()
         }
 
-        //binding.btnDel.setOnC
+        binding.btnDeleteprofie.setOnClickListener(){
+            val fragment = HomeFragment()
+            val fragmentManager = activity?.supportFragmentManager
+            val fragmentTransaction = fragmentManager!!.beginTransaction()
+            fragmentTransaction.replace(R.id.frameLayout, fragment).addToBackStack(ProfileFragment().toString()).commit()
+        }
 
 
         
@@ -84,7 +90,7 @@ class ProfileFragment : Fragment() {
         val shopEmail = binding.shopemail.text.toString()
         val shopNumber = binding.shopNumber.text.toString()
         val shopPassword = binding.shopPassword.text.toString()
-        //dtClass = DtClass()
+
         db = FirebaseDatabase.getInstance().getReference("Shops")
         val shop = shopDC(shopName, shopImage, shopEmail, shopNumber, shopPassword)
         val databaseReference = FirebaseDatabase.getInstance().reference
@@ -121,6 +127,7 @@ class ProfileFragment : Fragment() {
         val shop = shopDC(shopName, shopImage, shopEmail, shopNumber, shopPassword)
         val databaseReference = FirebaseDatabase.getInstance().reference
         val id = databaseReference.push().key
+
         db.child(id.toString()).setValue(shop).addOnSuccessListener {
             binding.shopname.text.clear()
             shopImage = " "

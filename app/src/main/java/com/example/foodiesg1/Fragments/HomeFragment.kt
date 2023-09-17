@@ -41,8 +41,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        //binding.itemList.layoutManage=LineaLayoutManager(context)
-        //binding.itemList.hasFixedSize()
+        binding.itemList.layoutManager=LineaLayoutManager(context)
+        binding..hasFixedSize()
         shopArrayList = arrayListOf<shopDC>()
 
         nodeList = arrayListOf<tempClass>()
@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
 
                     }
                     var adapter = shopAdapter(shopArrayList)
-                    binding.shopList.adapter = adapter
+                    //binding.shplst.adapter = adapter
                     adapter.setOnItemClickListener(object : shopAdapter.OnItemClickListener{
                         override fun onItemClick(position: Int) {
                             val ctshp = nodeList[position]

@@ -33,8 +33,6 @@ class AddRestaurantDialogFragment : DialogFragment() {
             }
     }
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,7 +60,12 @@ class AddRestaurantDialogFragment : DialogFragment() {
         binding.todoNextBtn.setOnClickListener {
 
             val todorestaurant = binding.todoEt.text.toString()
-            if (todorestaurant.isNotEmpty()){
+
+            //val name = binding.shopName.text.toString()
+            //val cuisine = binding.shopCuisine.text.toString()
+            //val time = binding.shopTimes.text.toString()
+
+            if (todorestaurant.isNotEmpty()){// && name.isNotEmpty() && cuisine.isNotEmpty() && time.isNotEmpty()){
                 if (toDoData == null){
                     listener?.saverestaurant(todorestaurant , binding.todoEt)
                 }else{

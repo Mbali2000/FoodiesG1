@@ -5,5 +5,8 @@
     <string name="enter_your_email">Enter Your Email .....</string>
     <string name="enter_your_pass">Enter Your Password .....</string>
     <string name="re_enter_your_pass">Re-enter Your Password .....</string>
-    <string name="type_your_task">Enter restaurant name  .....</string>
+    <string name="type_your_task">Enter store id .....</string>
+    <string name="type_your_store">Enter store name  .....</string>
+    <string name="type_your_cuisine">Enter store cuisine .....</string>
+    <string name="type_your_time">Enter store opening times .....</string>
 </resources>

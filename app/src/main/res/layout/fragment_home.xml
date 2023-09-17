@@ -38,6 +38,8 @@
         tools:ignore="MissingConstraints" />
 
 
+
+
 <!--    <ImageView-->
 <!--        android:id="@+id/imageView2"-->
 <!--        android:layout_width="60dp"-->
@@ -97,6 +99,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addrestaurantBtn"
         app:spanCount="2"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/nextHomeBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:src="@drawable/btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints" />
 
 

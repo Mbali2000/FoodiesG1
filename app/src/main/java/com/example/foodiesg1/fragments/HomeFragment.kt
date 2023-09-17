@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodiesg1.R
 import com.example.foodiesg1.databinding.FragmentHomeBinding
 import com.example.foodiesg1.utils.adapter.restaurantAdapter
 import com.example.foodiesg1.utils.model.ToDoData
@@ -29,6 +32,7 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
     private var frag: AddRestaurantDialogFragment? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var authId: String
+    private lateinit var navController: NavController
 
     private lateinit var restaurantAdapter: restaurantAdapter
     private lateinit var toDoItemList: MutableList<ToDoData>
@@ -45,7 +49,7 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        init()
+        init(view)
 
         //get data from firebase
         getrestaurantFromFirebase()
@@ -63,6 +67,10 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
                 AddRestaurantDialogFragment.TAG
             )
 
+        }
+
+        binding.nextHomeBtn.setOnClickListener{
+            navController.navigate(R.id.action_homeFragment_to_storesFragment)
         }
     }
 
@@ -93,7 +101,7 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
         })
     }
 
-    private fun init() {
+    private fun init(view: View) {
 
         auth = FirebaseAuth.getInstance()
         authId = auth.currentUser!!.uid
@@ -108,6 +116,7 @@ class HomeFragment : Fragment(), AddRestaurantDialogFragment.OnDialogNextBtnClic
         restaurantAdapter = restaurantAdapter(toDoItemList)
         restaurantAdapter.setListener(this)
         binding.mainRecyclerView.adapter = restaurantAdapter
+        navController = Navigation.findNavController(view)
     }
 
     override fun saverestaurant(todorestaurant: String, todoEdit: TextInputEditText) {

@@ -113,14 +113,14 @@ public class AdapterPdfFavorite extends RecyclerView.Adapter<AdapterPdfFavorite.
                         //format Date
                         String date = MyApplication.formatTimestamp(Long.parseLong(timestamp));
 
-                        MyApplication.loadCategory(categoryId, holder.categoryTv);
+
                         MyApplication.loadPdfFromUrlSinglePage(""+bookUrl, ""+bookTitle, holder.pdfView, holder.progressBar, null);
-                        MyApplication.loadPdfSize(""+bookUrl, ""+bookTitle, holder.sizeTv);
+
 
                         //set data to views
                         holder.titleTv.setText(bookTitle);
                         holder.descriptionTv.setText(description);
-                        holder.dateTv.setText(date);
+
                     }
 
                     @Override
@@ -140,7 +140,7 @@ public class AdapterPdfFavorite extends RecyclerView.Adapter<AdapterPdfFavorite.
 
         PDFView pdfView;
         ProgressBar progressBar;
-        TextView titleTv, descriptionTv, categoryTv, sizeTv, dateTv;
+        TextView titleTv, descriptionTv;
         ImageButton removeFavBtn;
 
         public HolderPdfFavorite(@NonNull View itemView) {
@@ -152,9 +152,9 @@ public class AdapterPdfFavorite extends RecyclerView.Adapter<AdapterPdfFavorite.
             titleTv = binding.titleTv;
             removeFavBtn = binding.removeFavBtn;
             descriptionTv = binding.descriptionTv;
-            categoryTv = binding.categoryTv;
-            sizeTv = binding.sizeTv;
-            dateTv = binding.dateTv;
+//            categoryTv = binding.categoryTv;
+//            sizeTv = binding.sizeTv;
+//            dateTv = binding.dateTv;
         }
     }
 }

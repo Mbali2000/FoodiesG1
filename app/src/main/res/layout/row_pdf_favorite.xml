@@ -68,37 +68,37 @@
             android:layout_toEndOf="@id/pdfRl"
             android:text="The Food Description"/>
 
-        <TextView
-            android:id="@+id/categoryTv"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:maxLines="1"
-            android:text="Restaurant (Category)"/>
+<!--        <TextView-->
+<!--            android:id="@+id/categoryTv"-->
+<!--            style="@style/TextAppearance.MaterialComponents.Caption"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="Restaurant (Category)"/>-->
 
-        <TextView
-            android:id="@+id/sizeTv"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@id/pdfRl"
-            android:maxLines="1"
-            android:text="13 MB"/>
+<!--        <TextView-->
+<!--            android:id="@+id/sizeTv"-->
+<!--            style="@style/TextAppearance.MaterialComponents.Caption"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_toEndOf="@id/pdfRl"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="13 MB"/>-->
 
-        <TextView
-            android:id="@+id/dateTv"
-            style="@style/TextAppearance.MaterialComponents.Caption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@id/sizeTv"
-            android:layout_toStartOf="@id/categoryTv"
-            android:textAlignment="center"
-            android:maxLines="1"
-            android:text="dd/MM/yyyy"/>
+<!--        <TextView-->
+<!--            android:id="@+id/dateTv"-->
+<!--            style="@style/TextAppearance.MaterialComponents.Caption"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_toEndOf="@id/sizeTv"-->
+<!--            android:layout_toStartOf="@id/categoryTv"-->
+<!--            android:textAlignment="center"-->
+<!--            android:maxLines="1"-->
+<!--            android:text="dd/MM/yyyy"/>-->
 
     </RelativeLayout>
 

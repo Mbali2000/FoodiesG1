@@ -14,7 +14,7 @@ class StoreAdapter(private val list: MutableList<StoreData>) :
         this.listener = listener
     }
 
-    inner class StoreViewHolder(binding: EachStoreBinding) : RecyclerView.ViewHolder(binding.root)
+    class StoreViewHolder(val binding: EachStoreBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoreViewHolder {
         val binding = EachStoreBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,7 +26,7 @@ class StoreAdapter(private val list: MutableList<StoreData>) :
     }
 
     override fun onBindViewHolder(holder: StoreViewHolder, position: Int) {
-        /*with(holder){
+        with(holder){
             with(list[position]){
 
                 binding.storename.text = this.storeName
@@ -42,7 +42,7 @@ class StoreAdapter(private val list: MutableList<StoreData>) :
                     listener?.onUpdateStoreClicked(this)
                 }
             }
-        }*/
+        }
     }
 
     interface StoreAdapterClicksInterface{

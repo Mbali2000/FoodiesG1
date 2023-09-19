@@ -24,7 +24,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
 
-class StoresFragment : Fragment(), StorePopUpFragment.PopUpNextListeners {
+class StoresFragment : Fragment(), StorePopUpFragment.PopUpNextListeners,
+    StoreAdapter.StoreAdapterClicksInterface {
 
     private lateinit var navController: NavController
     private lateinit var binding: FragmentStoresBinding
@@ -32,7 +33,7 @@ class StoresFragment : Fragment(), StorePopUpFragment.PopUpNextListeners {
     private lateinit var databaseRef: DatabaseReference
     private lateinit var popUpFragment: StorePopUpFragment
     private lateinit var adapter: StoreAdapter
-    private lateinit var list: MutableList<StoreData>
+    private lateinit var mList: MutableList<StoreData>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,33 +54,22 @@ class StoresFragment : Fragment(), StorePopUpFragment.PopUpNextListeners {
     }
 
     private fun getDataFromFirebase(shopId: String){
-        /*databaseRef.child(shopId).get().addOnSuccessListener {
-            if (it.exists()){
-                val name = it.child("storeName").value
-                val cuisine = it.child("storeCuisine").value
-                val time = it.child("storeTime").value
-                Toast.makeText(context, "Store successfully found", Toast.LENGTH_SHORT).show()
-                binding.storename.text = name.toString()
-                binding.storecuisine.text = cuisine.toString()
-                binding.storetime.text = time.toString()
+        /*databaseRef.addValueEventListener(object: ValueEventListener{
 
-            }else {
-                Toast.makeText(context, "Store not found", Toast.LENGTH_SHORT).show()
+            override fun onDataChange(snapshot: DataSnapshot) {
+                mList.clear()
+                for (shopSnapshot in snapshot.children)
+                    val shop = shopSnapshot.key?.let {
+                        StoreData(it, shopSnapshot.value.toString(), )
+                    }
+
             }
-        }.addOnFailureListener {
-            Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
-        }
-        databaseRef.addValueEventListener(object : ValueEventListener){
-            override fun onDataChange(snapshot: DataSnapshot){
-                list.clear()
-                for (shopSnap in snapshot.children){
-                    val
-                }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, "Failed to retrieve stores", Toast.LENGTH_SHORT).show()
             }
-            override fun onCancelled(error: DatabaseError){
-                Toast.makeText(context, "Failed to save your store", Toast.LENGTH_SHORT).show()
-            }
-        }*/
+        })*/
+
     }
 
     private fun registerEvents(){
@@ -101,8 +91,8 @@ class StoresFragment : Fragment(), StorePopUpFragment.PopUpNextListeners {
 
         binding.storeRecyclerView.setHasFixedSize(true)
         binding.storeRecyclerView.layoutManager = GridLayoutManager(context, 2)
-
-        adapter = StoreAdapter(list)
+        mList = mutableListOf()
+        adapter = StoreAdapter(mList)
         adapter.setListener(this)
         binding.storeRecyclerView.adapter = adapter
     }
@@ -131,6 +121,14 @@ class StoresFragment : Fragment(), StorePopUpFragment.PopUpNextListeners {
 
         popUpFragment.dismiss()
 
+    }
+
+    override fun onDeleteStoreClicked(storeData: StoreData) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onUpdateStoreClicked(storeData: StoreData) {
+        TODO("Not yet implemented")
     }
 
 

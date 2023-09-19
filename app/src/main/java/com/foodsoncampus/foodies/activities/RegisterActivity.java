@@ -8,10 +8,13 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -58,6 +61,13 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validateData();
+            }
+        });
+
+        binding.verifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextActivity();
             }
         });
 
@@ -111,8 +121,30 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        //account creation success, now add in firebase realtime database
-                        updateUserInfo();
+                        //email verification
+                        firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()){
+                                    Toast.makeText(RegisterActivity.this, "Please verify your email. Come back to click VERIFIED button", Toast.LENGTH_SHORT).show();
+                                    //progressDialog.dismiss();
+
+                                    binding.nameEt.setEnabled(false);
+                                    binding.emailEt.setEnabled(false);
+                                    binding.passwordEt.setEnabled(false);
+                                    binding.cPasswordEt.setEnabled(false);
+
+                                    binding.verifyBtn.setVisibility(View.VISIBLE);
+                                    binding.registerBtn.setVisibility(View.INVISIBLE);
+
+                                    //account creation success, now add in firebase realtime database
+                                    updateUserInfo();
+
+                                } else
+                                    Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -150,12 +182,12 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
+
                         //data added to db
                         progressDialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "Account created...", Toast.LENGTH_SHORT).show();
-                        //since user account is created so start dashboard of user
-                        startActivity(new Intent(RegisterActivity.this, DashboardUserActivity.class));
-                        finish();
+
+
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -166,5 +198,16 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+
+    private void nextActivity(){
+        //check if email is verified
+        if (firebaseAuth.getCurrentUser().isEmailVerified()){
+            //since user account is created so start dashboard of user
+            startActivity(new Intent(RegisterActivity.this, DashboardUserActivity.class));
+            finish();
+        } else {
+            Toast.makeText(RegisterActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
+        }
     }
 }

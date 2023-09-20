@@ -17,12 +17,13 @@
         <!--Back button-->
         <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_back_white"/>
+            android:src="@drawable/ic_back_white"
+            android:contentDescription="Back button"/>
 
         <!--Toolbar title-->
         <TextView
@@ -82,7 +83,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/pdfRl"
-                    android:text="Title of Book"/>
+                    android:text="Item name"/>
 
                 <!--Table-->
                 <TableLayout
@@ -232,7 +233,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="The description of the book"
+                android:text="The description of the item"
                 android:textColor="@color/black"/>
 
             <View
@@ -260,12 +261,13 @@
                 <!--Button: Show comment add dialog-->
                 <ImageButton
                     android:id="@+id/addCommentBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:layout_alignParentEnd="true"
                     android:background="@android:color/transparent"
                     android:padding="5dp"
-                    android:src="@drawable/ic_comment_add_black"/>
+                    android:src="@drawable/ic_comment_add_black"
+                    android:contentDescription="Add a comment"/>
 
                 <!--RecyclerView: Show comments-->
                 <androidx.recyclerview.widget.RecyclerView

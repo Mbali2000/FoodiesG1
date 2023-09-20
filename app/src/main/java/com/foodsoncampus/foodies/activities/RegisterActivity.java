@@ -33,6 +33,9 @@ public class RegisterActivity extends AppCompatActivity {
 
     //progress dialog
     private ProgressDialog progressDialog;
+    private boolean isAdmin = false;
+    private String confirmation;
+    private String secretCode = "101010"; //All admins should know the secret code
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +67,14 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        binding.verifyBtn.setOnClickListener(new View.OnClickListener() {
+        binding.adminCheckBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextActivity();
+                //determining if user is an admin/vendor
+                if (binding.adminCheckBox.isChecked()){
+                    binding.confirmAdminEt.setVisibility(View.VISIBLE);
+                    Toast.makeText(RegisterActivity.this, "Enter confirmation number", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -83,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = binding.emailEt.getText().toString().trim();
         password = binding.passwordEt.getText().toString().trim();
         String cPassword = binding.cPasswordEt.getText().toString().trim();
+
 
         //validate data
         if (TextUtils.isEmpty(name)){
@@ -121,30 +129,8 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        //email verification
-                        firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()){
-                                    Toast.makeText(RegisterActivity.this, "Please verify your email. Come back to click VERIFIED button", Toast.LENGTH_SHORT).show();
-                                    //progressDialog.dismiss();
-
-                                    binding.nameEt.setEnabled(false);
-                                    binding.emailEt.setEnabled(false);
-                                    binding.passwordEt.setEnabled(false);
-                                    binding.cPasswordEt.setEnabled(false);
-
-                                    binding.verifyBtn.setVisibility(View.VISIBLE);
-                                    binding.registerBtn.setVisibility(View.INVISIBLE);
-
-                                    //account creation success, now add in firebase realtime database
-                                    updateUserInfo();
-
-                                } else
-                                    Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-
+                        //account creation success, now add in firebase realtime database
+                        updateUserInfo();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -166,14 +152,25 @@ public class RegisterActivity extends AppCompatActivity {
         //get current user uid, since user is registered so we can get now
         String uid = firebaseAuth.getUid();
 
+        //getting confirmation for admin
+        confirmation = binding.confirmAdminEt.getText().toString().trim();
+        if (confirmation.equals(secretCode)){
+            isAdmin = true;
+        }
+
         //setup data to add in db
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("uid", uid);
         hashMap.put("email", email);
         hashMap.put("name", name);
         hashMap.put("profileImage", "");//add empty, will do later
-        hashMap.put("userType", "user"); //possible values are user, admin:  will make admin manually in firebase realtime database by changing this value
         hashMap.put("timestamp", timestamp);
+        hashMap.put("points", 0);
+        if (isAdmin){
+            hashMap.put("userType", "admin");
+        } else {
+            hashMap.put("userType", "user");
+        }
 
         //set data to db
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Users");
@@ -186,8 +183,9 @@ public class RegisterActivity extends AppCompatActivity {
                         //data added to db
                         progressDialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "Account created...", Toast.LENGTH_SHORT).show();
-
-
+                        //since user account is created so start dashboard of user
+                        startActivity(new Intent(RegisterActivity.this, DashboardUserActivity.class));
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -198,16 +196,5 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
-
-    private void nextActivity(){
-        //check if email is verified
-        if (firebaseAuth.getCurrentUser().isEmailVerified()){
-            //since user account is created so start dashboard of user
-            startActivity(new Intent(RegisterActivity.this, DashboardUserActivity.class));
-            finish();
-        } else {
-            Toast.makeText(RegisterActivity.this, "Please verify your email address", Toast.LENGTH_SHORT).show();
-        }
     }
 }

@@ -22,10 +22,11 @@
         <!--back button-->
         <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
+            android:contentDescription="Back button"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_back_white"/>
 
@@ -40,11 +41,12 @@
 
         <ImageButton
             android:id="@+id/profileEditBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
+            android:contentDescription="Edit profile button"
             android:background="@android:color/transparent"
             android:src="@drawable/ic_edit_white"/>
 

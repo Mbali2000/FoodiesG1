@@ -162,23 +162,35 @@
                 android:id="@+id/registerBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cPasswordTil"
+                android:layout_below="@id/confirmAdminEt"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/shape_button01"
                 android:text="Register"
                 android:textColor="@color/white"
                 android:visibility="visible"/>
 
-            <!--Verify Button-->
-            <Button
-                android:id="@+id/verifyBtn"
+            <CheckBox
+                android:id="@+id/adminCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I am admin/vendor"
+                android:layout_below="@id/cPasswordTil"
+                android:layout_centerHorizontal="true"
+                android:padding="10dp"/>
+
+            <EditText
+                android:id="@+id/confirmAdminEt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/registerBtn"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/shape_button01"
-                android:text="Verified"
-                android:textColor="@color/white"
+                android:layout_below="@id/adminCheckBox"
+                android:background="@drawable/shape_edittext01"
+                android:drawableStart="@drawable/ic_lock_gray"
+                android:drawablePadding="10dp"
+                android:hint="Secret code"
+                android:inputType="textPassword"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray01"
                 android:visibility="gone"/>
 
 

@@ -34,6 +34,7 @@ public class DashboardUserActivity extends AppCompatActivity {
     private ArrayList<ModelCategory> categoryArrayList;
     //adapter
     private AdapterCategory adapterCategory;
+    private boolean loggedIn = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +91,24 @@ public class DashboardUserActivity extends AppCompatActivity {
             }
         });
 
+        /*DatabaseReference dataRef = FirebaseDatabase.getInstance().getReference("Users");
+
+        String name = firebaseAuth.getCurrentUser().getEmail().toString();
+        dataRef.child(firebaseAuth.getUid())
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                String name = ""+snapshot.child("name").getValue();
+                                String points = (String) snapshot.child("points").getValue();
+                                binding.titleTv.setText(name+": "+ points);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+        binding.titleTv.setText(name);*/
 
     }
 

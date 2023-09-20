@@ -17,12 +17,13 @@
         <!--ImageButton: Open profile-->
         <ImageButton
             android:id="@+id/profileBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/ic_person_white"
             android:layout_centerVertical="true"
             android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:contentDescription="Profile button"/>
 
         <TextView
             android:id="@+id/titleTv"
@@ -45,13 +46,14 @@
 
         <ImageButton
             android:id="@+id/logoutBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_logout_white"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="10dp"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:contentDescription="Log out"/>
 
     </RelativeLayout>
 
@@ -59,7 +61,7 @@
     <EditText
         android:id="@+id/searchEt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_below="@id/toolbarRl"
         android:hint="Search"
         android:layout_marginStart="10dp"

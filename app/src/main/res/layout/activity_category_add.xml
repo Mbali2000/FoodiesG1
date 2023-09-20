@@ -14,12 +14,13 @@
 
         <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/ic_back_white"
             android:background="@android:color/transparent"
             android:layout_margin="10dp"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:contentDescription="Back button"/>
 
         <ImageView
             android:id="@+id/iconIv"
@@ -36,7 +37,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:fontFamily="sans-serif-condensed"
-            android:text="Add a new Category"
+            android:text="Add a new store"
             android:textColor="@color/white"
             android:textSize="28sp"/>
 
@@ -58,9 +59,9 @@
             android:background="@drawable/shape_edittext01"
             android:drawableStart="@drawable/ic_category_gray"
             android:drawablePadding="10dp"
-            android:hint="Category Title"
+            android:hint="Store name"
             android:inputType="textPersonName|textCapWords"
-            android:padding="10dp"
+            android:padding="15dp"
             android:textColor="@color/black"
             android:textColorHint="@color/gray01"/>
 

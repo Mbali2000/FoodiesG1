@@ -59,6 +59,7 @@ public class PdfDetailActivity extends AppCompatActivity {
     //adapter to set to recyclerview
     private AdapterComment adapterComment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,6 +152,7 @@ public class PdfDetailActivity extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() == null) {
                     Toast.makeText(PdfDetailActivity.this, "You're not logged in...", Toast.LENGTH_SHORT).show();
                 } else {
+                    //increaseUserPoints(10);
                     addCommentDialog();
                 }
             }
@@ -189,6 +191,31 @@ public class PdfDetailActivity extends AppCompatActivity {
                     }
                 });
     }
+    private int points = 0;
+    //increase user points when they add a comment
+    private void increaseUserPoints(int points){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(firebaseAuth.getUid());
+        reference.child("points");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String userPoint = snapshot.getValue().toString();
+                binding.addCommentBtn.setContentDescription(userPoint);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        int dbPoints = Integer.parseInt( binding.addCommentBtn.getContentDescription().toString() );
+        //points += dbPoints;
+        reference.setValue((points+dbPoints));
+    }
 
     private String comment = "";
 
@@ -224,6 +251,7 @@ public class PdfDetailActivity extends AppCompatActivity {
                 } else {
                     alertDialog.dismiss();
                     addComment();
+                    increaseUserPoints(10);
                 }
             }
         });

@@ -191,17 +191,23 @@ public class PdfDetailActivity extends AppCompatActivity {
                     }
                 });
     }
-    private int points = 0;
+
     //increase user points when they add a comment
     private void increaseUserPoints(int points){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(firebaseAuth.getUid());
-        reference.child("points");
-        reference.addValueEventListener(new ValueEventListener() {
+        DatabaseReference userRef = reference.child(firebaseAuth.getUid());
+        DatabaseReference pointRef = userRef.child("points");
+        pointRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String userPoint = snapshot.getValue().toString();
-                binding.addCommentBtn.setContentDescription(userPoint);
+                String userPoint = snapshot.getValue(String.class);
+                Toast.makeText(PdfDetailActivity.this, "points: "+userPoint, Toast.LENGTH_SHORT).show();
+                int currPoints = Integer.parseInt(userPoint);
+                int newPoints = currPoints + points;
+                Toast.makeText(PdfDetailActivity.this, "updated points: "+(newPoints), Toast.LENGTH_SHORT).show();
+
+                userRef.child("points").setValue(newPoints);
+                //binding.addCommentBtn.setContentDescription(userPoint);
 
             }
 
@@ -296,7 +302,6 @@ public class PdfDetailActivity extends AppCompatActivity {
                 });
 
     }
-
 
     //request storage permission
     private ActivityResultLauncher<String> requestPermissionLauncher =

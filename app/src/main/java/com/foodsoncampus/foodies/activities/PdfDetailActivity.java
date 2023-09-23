@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.foodsoncampus.foodies.MyApplication;
 import com.foodsoncampus.foodies.R;
@@ -151,8 +152,8 @@ public class PdfDetailActivity extends AppCompatActivity {
                 /*Requirements: User must be logged in to add comment*/
                 if (firebaseAuth.getCurrentUser() == null) {
                     Toast.makeText(PdfDetailActivity.this, "You're not logged in...", Toast.LENGTH_SHORT).show();
+                    //if not logged in, bring user to login screen
                 } else {
-                    //increaseUserPoints(10);
                     addCommentDialog();
                 }
             }
@@ -192,23 +193,27 @@ public class PdfDetailActivity extends AppCompatActivity {
                 });
     }
 
+    private static final String TAG = "CHANGE_POINTS_TAG";
+
     //increase user points when they add a comment
+    //Path: Users > userID > points > 'value of points'
     private void increaseUserPoints(int points){
+        Log.d(TAG, "updatePoints: Updating user points");
+        progressDialog.setMessage("Updating points...");
+        progressDialog.show();
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         DatabaseReference userRef = reference.child(firebaseAuth.getUid());
         DatabaseReference pointRef = userRef.child("points");
-        pointRef.addValueEventListener(new ValueEventListener() {
+
+        //get the current points from database
+        pointRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String userPoint = snapshot.getValue(String.class);
-                Toast.makeText(PdfDetailActivity.this, "points: "+userPoint, Toast.LENGTH_SHORT).show();
-                int currPoints = Integer.parseInt(userPoint);
-                int newPoints = currPoints + points;
-                Toast.makeText(PdfDetailActivity.this, "updated points: "+(newPoints), Toast.LENGTH_SHORT).show();
-
-                userRef.child("points").setValue(newPoints);
-                //binding.addCommentBtn.setContentDescription(userPoint);
-
+                pointRef.setValue(ServerValue.increment(points));
+                Log.d(TAG, "onSuccess: Points updated...");
+                progressDialog.dismiss();
+                Toast.makeText(PdfDetailActivity.this, "Incremented points", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -216,11 +221,6 @@ public class PdfDetailActivity extends AppCompatActivity {
 
             }
         });
-
-
-        int dbPoints = Integer.parseInt( binding.addCommentBtn.getContentDescription().toString() );
-        //points += dbPoints;
-        reference.setValue((points+dbPoints));
     }
 
     private String comment = "";
@@ -237,12 +237,13 @@ public class PdfDetailActivity extends AppCompatActivity {
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
-        //handle click, dismis dialog
+        //handle click, dismiss dialog
         commentAddBinding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 alertDialog.dismiss();
             }
+            //go to the PDFDetailActivity Screen
         });
 
         //handle click, add comment
@@ -255,9 +256,10 @@ public class PdfDetailActivity extends AppCompatActivity {
                 if (TextUtils.isEmpty(comment)) {
                     Toast.makeText(PdfDetailActivity.this, "Enter your comment...", Toast.LENGTH_SHORT).show();
                 } else {
+                    increaseUserPoints(10);
                     alertDialog.dismiss();
                     addComment();
-                    increaseUserPoints(10);
+
                 }
             }
         });
@@ -289,6 +291,7 @@ public class PdfDetailActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(PdfDetailActivity.this, "Comment Added...", Toast.LENGTH_SHORT).show();
+                        //increaseUserPoints(10);
                         progressDialog.dismiss();
                     }
                 })

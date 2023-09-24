@@ -1,23 +1,5 @@
 <resources>
-    <string name="app_name">FoodiesG1</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="shop_icon">Shop Icon</string>
-    <string name="food_shop_name">Food Shop Name</string>
-    <string name="location">Location</string>
-    <string name="time">9am - 5pm</string>
-    <string name="cuisine">Vegetarian</string>
-    <string name="stars">4 stars</string>
-    <string name="edit_shop">Edit Shop Details</string>
-    <string name="edit_menu">Edit Menu Items</string>
-    <string name="menu_items">Menu items</string>
-    <string name="menu_item_example">Chicken Sub</string>
-    <string name="price_example">R 0.00</string>
-    <string name="more">more...</string>
-    <string name="review">Ratings and Reviews</string>
-    <string name="add_review">Add Review</string>
-    <string name="cust_name">Customer name</string>
-    <string name="rate_star">Star</string>
-    <string name="random_review_text">5 stars for amazing service</string>
-
+    <string name="app_name">Foodies</string>
+    <string name="new_user_signup">New User? <b>SignUp</b></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string><!--make SignUp bold-->
 </resources>

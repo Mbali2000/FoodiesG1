@@ -1,26 +1,45 @@
 {
   "project_info": {
-    "project_number": "221056932432",
-    "project_id": "foodiesg1-12ed5",
-    "storage_bucket": "foodiesg1-12ed5.appspot.com"
+    "project_number": "763021807881",
+    "firebase_url": "https://foodies-f6da6-default-rtdb.firebaseio.com",
+    "project_id": "foodies-f6da6",
+    "storage_bucket": "foodies-f6da6.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:221056932432:android:85c36d678e5b22c5174f55",
+        "mobilesdk_app_id": "1:763021807881:android:49362766aaa7fc3f1e43d8",
         "android_client_info": {
-          "package_name": "com.example.foodiesg1"
+          "package_name": "com.foodsoncampus.foodies"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "763021807881-2fp3obpjvev80ehl7ejleba73o08g2te.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.foodsoncampus.foodies",
+            "certificate_hash": "ed3af8028fb9ae4aae14f23df705cf48a50647fd"
+          }
+        },
+        {
+          "client_id": "763021807881-n2h8dq2atn7dad9psm110kl95cnggand.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyDYUxbI29IAmJesxcWdWsCJKMr3a-83Szw"
+          "current_key": "AIzaSyDmW-hFy6XrcVEEmibbwkpF-H59q2Oyl-s"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763021807881-n2h8dq2atn7dad9psm110kl95cnggand.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

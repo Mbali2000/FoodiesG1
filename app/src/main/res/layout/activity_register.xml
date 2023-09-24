@@ -15,12 +15,13 @@
 
         <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:src="@drawable/ic_back_white"
             android:background="@android:color/transparent"
             android:layout_margin="10dp"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:contentDescription="@string/back_button_descr"/>
 
         <ImageView
             android:id="@+id/iconIv"
@@ -66,7 +67,7 @@
                 <EditText
                     android:id="@+id/nameEt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_person_gray"
                     android:drawablePadding="10dp"
@@ -92,7 +93,7 @@
                 <EditText
                     android:id="@+id/emailEt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_email_gray"
                     android:drawablePadding="10dp"
@@ -119,7 +120,7 @@
                 <EditText
                     android:id="@+id/passwordEt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_lock_gray"
                     android:drawablePadding="10dp"
@@ -145,7 +146,7 @@
                 <EditText
                     android:id="@+id/cPasswordEt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:background="@drawable/shape_edittext01"
                     android:drawableStart="@drawable/ic_lock_gray"
                     android:drawablePadding="10dp"
@@ -172,7 +173,7 @@
             <CheckBox
                 android:id="@+id/adminCheckBox"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="I am admin/vendor"
                 android:layout_below="@id/cPasswordTil"
                 android:layout_centerHorizontal="true"
@@ -198,4 +199,14 @@
 
     </ScrollView>
 
+    <!--Already registered, login-->
+    <TextView
+        android:id="@+id/noAccountTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:text="@string/existing_user_login"
+        android:textColor="@color/black"/>
 </RelativeLayout>

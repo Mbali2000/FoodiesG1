@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.foodsoncampus.foodies.databinding.DialogLoginAskBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -82,6 +83,8 @@ public class PdfDetailActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() != null) {
             checkIsFavorite();
+            //if user is logged in, there is no need for login button
+            binding.loginBtn.setVisibility(View.GONE);
         }
 
         loadBookDetails();
@@ -95,6 +98,14 @@ public class PdfDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+
+        //login button in case user wants to login
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToLogin();
             }
         });
 
@@ -153,6 +164,7 @@ public class PdfDetailActivity extends AppCompatActivity {
                 if (firebaseAuth.getCurrentUser() == null) {
                     Toast.makeText(PdfDetailActivity.this, "You're not logged in...", Toast.LENGTH_SHORT).show();
                     //if not logged in, bring user to login screen
+                    loginDialog();
                 } else {
                     addCommentDialog();
                 }
@@ -161,6 +173,14 @@ public class PdfDetailActivity extends AppCompatActivity {
 
 
     }
+
+    //goes to login activity, used multiple times
+    private void goToLogin(){
+        Intent loginIntent = new Intent(PdfDetailActivity.this, LoginActivity.class);
+        startActivity(loginIntent);
+    }
+
+
 
     private void loadComments() {
         //init arraylist before adding data into it
@@ -206,7 +226,7 @@ public class PdfDetailActivity extends AppCompatActivity {
         DatabaseReference userRef = reference.child(firebaseAuth.getUid());
         DatabaseReference pointRef = userRef.child("points");
 
-        //get the current points from database
+        //update the current points from database
         pointRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -218,7 +238,37 @@ public class PdfDetailActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                Log.d(TAG, "onFailure: Could not add points");
+                progressDialog.dismiss();
+                Toast.makeText(PdfDetailActivity.this, "Points could not be added", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
+    private void loginDialog(){
+        DialogLoginAskBinding loginAskBinding = DialogLoginAskBinding.inflate(LayoutInflater.from(this));
+        //setup alert dialog builder
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.CustomDialog);
+        builder.setView(loginAskBinding.getRoot());
+
+        //create and show alert dialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+        //if yes button is clicked
+        loginAskBinding.yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+                goToLogin();
+            }
+        });
+
+        //if no button is clicked, go back to PdfDetailActivity
+        loginAskBinding.noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
             }
         });
     }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,8 +77,15 @@ public class DashboardUserActivity extends AppCompatActivity {
         binding.logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firebaseAuth.signOut();
-                checkUser();
+                if (firebaseAuth.getCurrentUser() != null){
+                    firebaseAuth.signOut();
+                    checkUser();
+                }
+                else {
+                    Toast.makeText(DashboardUserActivity.this, "Logging in user..", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(DashboardUserActivity.this, LoginActivity.class));
+                }
+
             }
         });
 
@@ -87,6 +95,7 @@ public class DashboardUserActivity extends AppCompatActivity {
         binding.profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(DashboardUserActivity.this, ProfileActivity.class));
             }
         });

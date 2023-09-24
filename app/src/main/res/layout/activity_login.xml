@@ -106,7 +106,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="5dp"
                 android:padding="5dp"
-                android:text="Forgot Password?"
+                android:text="@string/forgot_pass"
                 android:textColor="@color/gray02" />
 
             <!--Login Button-->
@@ -119,6 +119,18 @@
                 android:background="@drawable/shape_button01"
                 android:text="Login"
                 android:textColor="@color/white"/>
+
+            <!--Forgot password-->
+            <TextView
+                android:id="@+id/skipTv"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_below="@id/loginBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:padding="5dp"
+                android:text="@string/skip"
+                android:textColor="@color/gray02" />
 
 
         </RelativeLayout>

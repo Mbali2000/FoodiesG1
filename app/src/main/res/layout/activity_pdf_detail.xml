@@ -27,12 +27,25 @@
 
         <!--Toolbar title-->
         <TextView
+            android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Book Details"
+            android:text="Menu Item Details"
             android:textColor="@color/white"
             android:textStyle="bold"/>
+
+        <ImageButton
+            android:id="@+id/loginBtn"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_person_white"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="80dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="Log in"
+            android:visibility="visible"
+            android:layout_toRightOf="@id/toolbarTitle"/>
 
     </RelativeLayout>
 

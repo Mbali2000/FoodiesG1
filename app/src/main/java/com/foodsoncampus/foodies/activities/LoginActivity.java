@@ -56,6 +56,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        binding.skipTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, DashboardUserActivity.class));
+            }
+        });
+
         //handle click, begin login
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

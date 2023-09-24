@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Foodies</string>
-    <string name="new_user_signup">New User? <b>SignUp</b></string>
-    <string name="hello_blank_fragment">Hello blank fragment</string><!--make SignUp bold-->
+    <string name="new_user_signup">New User? <b>SignUp</b></string><!--make SignUp bold-->
+    <string name="existing_user_login">Already registered? <b>Login</b></string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back_button_descr">Back button</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="skip">Skip login</string>
+
 </resources>

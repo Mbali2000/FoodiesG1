@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private boolean isAdmin = false;
     private String confirmation;
-    private String secretCode = "101010"; //All admins should know the secret code
+    private String secretCode = "101010"; //All admins should know the secret code. No one is allowed to login as admin if incorrect
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +90,8 @@ public class RegisterActivity extends AppCompatActivity {
         email = binding.emailEt.getText().toString().trim();
         password = binding.passwordEt.getText().toString().trim();
         String cPassword = binding.cPasswordEt.getText().toString().trim();
-
+        String code = binding.confirmAdminEt.getText().toString().trim();
+        boolean checked = binding.adminCheckBox.isChecked();
 
         //validate data
         if (TextUtils.isEmpty(name)){
@@ -112,6 +113,10 @@ public class RegisterActivity extends AppCompatActivity {
         else if (!password.equals(cPassword)){
             //password and confirm password doesn't match, don't allow to continue in that case, both password must match
             Toast.makeText(this, "Password doesn't match...!", Toast.LENGTH_SHORT).show();
+        }
+        else if (checked && !code.equals(secretCode)){
+            //if the checkbox is checked(admin), and secret code is incorrect, don't allow to continue
+            Toast.makeText(RegisterActivity.this, "Incorrect secret code!", Toast.LENGTH_SHORT).show();
         }
         else {
             //all data is validated, begin creating account
@@ -153,8 +158,11 @@ public class RegisterActivity extends AppCompatActivity {
         String uid = firebaseAuth.getUid();
 
         //getting confirmation for admin
-        confirmation = binding.confirmAdminEt.getText().toString().trim();
-        if (confirmation.equals(secretCode)){
+
+        boolean checked = binding.adminCheckBox.isChecked();
+        String confirmation = binding.confirmAdminEt.getText().toString().trim();
+        //check if user is admin by having the correct secret code and checking the checkbox
+        if (checked && confirmation.equals(secretCode)){
             isAdmin = true;
         }
 
@@ -184,7 +192,11 @@ public class RegisterActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "Account created...", Toast.LENGTH_SHORT).show();
                         //since user account is created so start dashboard of user
-                        startActivity(new Intent(RegisterActivity.this, DashboardUserActivity.class));
+                        if (isAdmin){
+                            startActivity(new Intent(RegisterActivity.this, DashboardAdminActivity.class));
+                        } else {
+                            startActivity(new Intent(RegisterActivity.this, DashboardUserActivity.class));
+                        }
                         finish();
                     }
                 })
